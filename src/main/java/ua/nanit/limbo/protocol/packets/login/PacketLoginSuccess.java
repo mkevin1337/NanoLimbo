@@ -36,14 +36,12 @@ public class PacketLoginSuccess implements PacketOut {
         this.username = username;
     }
 
-    @Override
+@Override
     public void encode(ByteMessage msg, Version version) {
         if (version.moreOrEqual(Version.V1_16)) {
             msg.writeUuid(uuid);
-        } else if (version.moreOrEqual(Version.V1_7_6)) {
-            msg.writeString(uuid.toString());
         } else {
-            msg.writeString(uuid.toString().replace("-", ""));
+            msg.writeString(uuid.toString());
         }
         msg.writeString(username);
         if (version.moreOrEqual(Version.V1_19)) {

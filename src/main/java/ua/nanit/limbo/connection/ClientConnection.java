@@ -185,11 +185,7 @@ public class ClientConnection extends ChannelInboundHandlerAdapter {
             sendKeepAlive();
         };
 
-        if (clientVersion.lessOrEqual(Version.V1_7_6)) {
-            this.channel.eventLoop().schedule(sendPlayPackets, 100, TimeUnit.MILLISECONDS);
-        } else {
-            sendPlayPackets.run();
-        }
+        sendPlayPackets.run();
     }
 
     public void onLoginAcknowledgedReceived() {
