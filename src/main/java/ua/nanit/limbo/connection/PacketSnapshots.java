@@ -164,14 +164,6 @@ public final class PacketSnapshots {
             PACKET_PLUGIN_MESSAGE = PacketSnapshot.of(pluginMessage);
         }
 
-        if (server.getConfig().isUseJoinMessage()) {
-            PacketChatMessage joinMessage = new PacketChatMessage();
-            joinMessage.setMessage(NbtMessageUtil.create(server.getConfig().getJoinMessage()));
-            joinMessage.setPosition(PacketChatMessage.PositionLegacy.SYSTEM_MESSAGE);
-            joinMessage.setSender(UUID.randomUUID());
-            PACKET_JOIN_MESSAGE = PacketSnapshot.of(joinMessage);
-        }
-
         if (server.getConfig().isUseBossBar()) {
             PacketBossBar bossBar = new PacketBossBar();
             bossBar.setBossBar(server.getConfig().getBossBar());

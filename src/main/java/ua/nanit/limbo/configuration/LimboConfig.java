@@ -48,14 +48,12 @@ public final class LimboConfig {
     private int gameMode;
 
     private boolean useBrandName;
-    private boolean useJoinMessage;
     private boolean useBossBar;
     private boolean useTitle;
     private boolean usePlayerList;
     private boolean useHeaderAndFooter;
 
     private String brandName;
-    private String joinMessage;
     private BossBar bossBar;
     private Title title;
 
@@ -101,7 +99,6 @@ public final class LimboConfig {
         }
         gameMode = conf.node("gameMode").getInt();
         useBrandName = conf.node("brandName", "enable").getBoolean();
-        useJoinMessage = conf.node("joinMessage", "enable").getBoolean();
         useBossBar = conf.node("bossBar", "enable").getBoolean();
         useTitle = conf.node("title", "enable").getBoolean();
         usePlayerList = conf.node("playerList", "enable").getBoolean();
@@ -110,9 +107,6 @@ public final class LimboConfig {
 
         if (useBrandName)
             brandName = conf.node("brandName", "content").getString();
-
-        if (useJoinMessage)
-            joinMessage = Colors.of(conf.node("joinMessage", "text").getString(""));
 
         if (useBossBar)
             bossBar = conf.node("bossBar").get(BossBar.class);
@@ -201,10 +195,6 @@ public final class LimboConfig {
         return useBrandName;
     }
 
-    public boolean isUseJoinMessage() {
-        return useJoinMessage;
-    }
-
     public boolean isUseBossBar() {
         return useBossBar;
     }
@@ -223,10 +213,6 @@ public final class LimboConfig {
 
     public String getBrandName() {
         return brandName;
-    }
-
-    public String getJoinMessage() {
-        return joinMessage;
     }
 
     public BossBar getBossBar() {

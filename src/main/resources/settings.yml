@@ -50,11 +50,6 @@ brandName:
   enable: true
   content: 'NanoLimbo'
 
-# Message sends when player joins to the server
-joinMessage:
-  enable: true
-  text: '{"text": "&eWelcome to the Limbo!"}'
-
 # BossBar displays when player joins to the server
 # For 1.9+ clients
 bossBar:
