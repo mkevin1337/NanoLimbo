@@ -22,7 +22,6 @@ import org.spongepowered.configurate.ConfigurationOptions;
 import org.spongepowered.configurate.serialize.TypeSerializerCollection;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 import ua.nanit.limbo.util.Colors;
-import ua.nanit.limbo.server.data.BossBar;
 import ua.nanit.limbo.server.data.InfoForwarding;
 import ua.nanit.limbo.server.data.PingData;
 import ua.nanit.limbo.server.data.Title;
@@ -48,13 +47,11 @@ public final class LimboConfig {
     private int gameMode;
 
     private boolean useBrandName;
-    private boolean useBossBar;
     private boolean useTitle;
     private boolean usePlayerList;
     private boolean useHeaderAndFooter;
 
     private String brandName;
-    private BossBar bossBar;
     private Title title;
 
     private String playerListUsername;
@@ -99,7 +96,6 @@ public final class LimboConfig {
         }
         gameMode = conf.node("gameMode").getInt();
         useBrandName = conf.node("brandName", "enable").getBoolean();
-        useBossBar = conf.node("bossBar", "enable").getBoolean();
         useTitle = conf.node("title", "enable").getBoolean();
         usePlayerList = conf.node("playerList", "enable").getBoolean();
         playerListUsername = conf.node("playerList", "username").getString();
@@ -107,9 +103,6 @@ public final class LimboConfig {
 
         if (useBrandName)
             brandName = conf.node("brandName", "content").getString();
-
-        if (useBossBar)
-            bossBar = conf.node("bossBar").get(BossBar.class);
 
         if (useTitle)
             title = conf.node("title").get(Title.class);
@@ -154,7 +147,6 @@ public final class LimboConfig {
                 .register(SocketAddress.class, new SocketAddressSerializer())
                 .register(InfoForwarding.class, new InfoForwarding.Serializer())
                 .register(PingData.class, new PingData.Serializer())
-                .register(BossBar.class, new BossBar.Serializer())
                 .register(Title.class, new Title.Serializer())
                 .build();
     }
@@ -195,10 +187,6 @@ public final class LimboConfig {
         return useBrandName;
     }
 
-    public boolean isUseBossBar() {
-        return useBossBar;
-    }
-
     public boolean isUseTitle() {
         return useTitle;
     }
@@ -213,10 +201,6 @@ public final class LimboConfig {
 
     public String getBrandName() {
         return brandName;
-    }
-
-    public BossBar getBossBar() {
-        return bossBar;
     }
 
     public Title getTitle() {

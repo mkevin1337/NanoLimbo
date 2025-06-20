@@ -164,13 +164,6 @@ public final class PacketSnapshots {
             PACKET_PLUGIN_MESSAGE = PacketSnapshot.of(pluginMessage);
         }
 
-        if (server.getConfig().isUseBossBar()) {
-            PacketBossBar bossBar = new PacketBossBar();
-            bossBar.setBossBar(server.getConfig().getBossBar());
-            bossBar.setUuid(UUID.randomUUID());
-            PACKET_BOSS_BAR = PacketSnapshot.of(bossBar);
-        }
-
         if (server.getConfig().isUseTitle()) {
             Title title = server.getConfig().getTitle();
 

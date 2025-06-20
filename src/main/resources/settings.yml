@@ -50,17 +50,6 @@ brandName:
   enable: true
   content: 'NanoLimbo'
 
-# BossBar displays when player joins to the server
-# For 1.9+ clients
-bossBar:
-  enable: true
-  text: '{"text": "Welcome to the Limbo!"}'
-  health: 1.0
-  # Available colors: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
-  color: PINK
-  # Available divisions: SOLID, DASHES_6, DASHES_10, DASHES_12, DASHES_20
-  division: SOLID
-
 # Display title and subtitle
 # For 1.8+ clients
 title:
