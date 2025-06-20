@@ -173,9 +173,6 @@ public class ClientConnection extends ChannelInboundHandlerAdapter {
             if (PacketSnapshots.PACKET_JOIN_MESSAGE != null)
                 writePacket(PacketSnapshots.PACKET_JOIN_MESSAGE);
 
-            if (PacketSnapshots.PACKET_TITLE_TITLE != null && clientVersion.moreOrEqual(Version.V1_8))
-                writeTitle();
-
             if (PacketSnapshots.PACKET_HEADER_AND_FOOTER != null && clientVersion.moreOrEqual(Version.V1_8))
                 writePacket(PacketSnapshots.PACKET_HEADER_AND_FOOTER);
 
@@ -243,18 +240,6 @@ public class ClientConnection extends ChannelInboundHandlerAdapter {
             PacketDisconnect disconnect = new PacketDisconnect();
             disconnect.setReason(reason);
             sendPacketAndClose(disconnect);
-        }
-    }
-
-    public void writeTitle() {
-        if (clientVersion.moreOrEqual(Version.V1_17)) {
-            writePacket(PacketSnapshots.PACKET_TITLE_TITLE);
-            writePacket(PacketSnapshots.PACKET_TITLE_SUBTITLE);
-            writePacket(PacketSnapshots.PACKET_TITLE_TIMES);
-        } else {
-            writePacket(PacketSnapshots.PACKET_TITLE_LEGACY_TITLE);
-            writePacket(PacketSnapshots.PACKET_TITLE_LEGACY_SUBTITLE);
-            writePacket(PacketSnapshots.PACKET_TITLE_LEGACY_TIMES);
         }
     }
 

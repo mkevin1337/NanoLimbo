@@ -33,7 +33,6 @@ import ua.nanit.limbo.protocol.packets.login.PacketLoginSuccess;
 import ua.nanit.limbo.protocol.packets.play.*;
 import ua.nanit.limbo.protocol.registry.Version;
 import ua.nanit.limbo.server.LimboServer;
-import ua.nanit.limbo.server.data.Title;
 import ua.nanit.limbo.util.NbtMessageUtil;
 import ua.nanit.limbo.util.UuidUtil;
 
@@ -56,14 +55,6 @@ public final class PacketSnapshots {
     public static PacketSnapshot PACKET_PLAYER_POS_AND_LOOK_LEGACY;
     // For 1.19 we need to spawn player outside the world to avoid stuck in terrain loading
     public static PacketSnapshot PACKET_PLAYER_POS_AND_LOOK;
-
-    public static PacketSnapshot PACKET_TITLE_TITLE;
-    public static PacketSnapshot PACKET_TITLE_SUBTITLE;
-    public static PacketSnapshot PACKET_TITLE_TIMES;
-
-    public static PacketSnapshot PACKET_TITLE_LEGACY_TITLE;
-    public static PacketSnapshot PACKET_TITLE_LEGACY_SUBTITLE;
-    public static PacketSnapshot PACKET_TITLE_LEGACY_TIMES;
 
     public static PacketSnapshot PACKET_REGISTRY_DATA;
 
@@ -162,41 +153,6 @@ public final class PacketSnapshots {
                 byteMessage.release();
             }
             PACKET_PLUGIN_MESSAGE = PacketSnapshot.of(pluginMessage);
-        }
-
-        if (server.getConfig().isUseTitle()) {
-            Title title = server.getConfig().getTitle();
-
-            PacketTitleSetTitle packetTitle = new PacketTitleSetTitle();
-            PacketTitleSetSubTitle packetSubtitle = new PacketTitleSetSubTitle();
-            PacketTitleTimes packetTimes = new PacketTitleTimes();
-
-            PacketTitleLegacy legacyTitle = new PacketTitleLegacy();
-            PacketTitleLegacy legacySubtitle = new PacketTitleLegacy();
-            PacketTitleLegacy legacyTimes = new PacketTitleLegacy();
-
-            packetTitle.setTitle(title.getTitle());
-            packetSubtitle.setSubtitle(title.getSubtitle());
-            packetTimes.setFadeIn(title.getFadeIn());
-            packetTimes.setStay(title.getStay());
-            packetTimes.setFadeOut(title.getFadeOut());
-
-            legacyTitle.setTitle(title);
-            legacyTitle.setAction(PacketTitleLegacy.Action.SET_TITLE);
-
-            legacySubtitle.setTitle(title);
-            legacySubtitle.setAction(PacketTitleLegacy.Action.SET_SUBTITLE);
-
-            legacyTimes.setTitle(title);
-            legacyTimes.setAction(PacketTitleLegacy.Action.SET_TIMES_AND_DISPLAY);
-
-            PACKET_TITLE_TITLE = PacketSnapshot.of(packetTitle);
-            PACKET_TITLE_SUBTITLE = PacketSnapshot.of(packetSubtitle);
-            PACKET_TITLE_TIMES = PacketSnapshot.of(packetTimes);
-
-            PACKET_TITLE_LEGACY_TITLE = PacketSnapshot.of(legacyTitle);
-            PACKET_TITLE_LEGACY_SUBTITLE = PacketSnapshot.of(legacySubtitle);
-            PACKET_TITLE_LEGACY_TIMES = PacketSnapshot.of(legacyTimes);
         }
 
         PACKET_KNOWN_PACKS = PacketSnapshot.of(PacketKnownPacks.class, (version) -> {

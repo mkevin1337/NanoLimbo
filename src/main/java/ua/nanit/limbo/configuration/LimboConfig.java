@@ -24,7 +24,6 @@ import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 import ua.nanit.limbo.util.Colors;
 import ua.nanit.limbo.server.data.InfoForwarding;
 import ua.nanit.limbo.server.data.PingData;
-import ua.nanit.limbo.server.data.Title;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -47,12 +46,10 @@ public final class LimboConfig {
     private int gameMode;
 
     private boolean useBrandName;
-    private boolean useTitle;
     private boolean usePlayerList;
     private boolean useHeaderAndFooter;
 
     private String brandName;
-    private Title title;
 
     private String playerListUsername;
     private String playerListHeader;
@@ -96,16 +93,12 @@ public final class LimboConfig {
         }
         gameMode = conf.node("gameMode").getInt();
         useBrandName = conf.node("brandName", "enable").getBoolean();
-        useTitle = conf.node("title", "enable").getBoolean();
         usePlayerList = conf.node("playerList", "enable").getBoolean();
         playerListUsername = conf.node("playerList", "username").getString();
         useHeaderAndFooter = conf.node("headerAndFooter", "enable").getBoolean();
 
         if (useBrandName)
             brandName = conf.node("brandName", "content").getString();
-
-        if (useTitle)
-            title = conf.node("title").get(Title.class);
 
         if (useHeaderAndFooter) {
             playerListHeader = Colors.of(conf.node("headerAndFooter", "header").getString());
@@ -147,7 +140,6 @@ public final class LimboConfig {
                 .register(SocketAddress.class, new SocketAddressSerializer())
                 .register(InfoForwarding.class, new InfoForwarding.Serializer())
                 .register(PingData.class, new PingData.Serializer())
-                .register(Title.class, new Title.Serializer())
                 .build();
     }
 
@@ -187,10 +179,6 @@ public final class LimboConfig {
         return useBrandName;
     }
 
-    public boolean isUseTitle() {
-        return useTitle;
-    }
-
     public boolean isUsePlayerList() {
         return usePlayerList;
     }
@@ -201,10 +189,6 @@ public final class LimboConfig {
 
     public String getBrandName() {
         return brandName;
-    }
-
-    public Title getTitle() {
-        return title;
     }
 
     public String getPlayerListUsername() {

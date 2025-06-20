@@ -50,21 +50,6 @@ brandName:
   enable: true
   content: 'NanoLimbo'
 
-# Display title and subtitle
-# For 1.8+ clients
-title:
-  enable: true
-  # Set title text value empty, if you need only subtitle
-  title: '{"text": "&9&lWelcome!"}'
-  # Set subtitle text value empty, if you need only title
-  subtitle: '{"text": "&6NanoLimbo"}'
-  # Fade in time in ticks (1 sec = 20 ticks)
-  fadeIn: 10
-  # Stay time in ticks
-  stay: 100
-  # Fade out time in ticks
-  fadeOut: 10
-
 # Player info forwarding support.
 # Available types:
 #  - NONE
