@@ -48,7 +48,6 @@ import java.security.MessageDigest;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 
 public class ClientConnection extends ChannelInboundHandlerAdapter {
 

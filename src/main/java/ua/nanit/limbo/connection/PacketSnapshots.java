@@ -17,13 +17,10 @@
 
 package ua.nanit.limbo.connection;
 
-import io.netty.buffer.ByteBufAllocator;
 import net.kyori.adventure.nbt.BinaryTag;
 import net.kyori.adventure.nbt.CompoundBinaryTag;
 import net.kyori.adventure.nbt.IntBinaryTag;
 import net.kyori.adventure.nbt.ListBinaryTag;
-import ua.nanit.limbo.LimboConstants;
-import ua.nanit.limbo.protocol.ByteMessage;
 import ua.nanit.limbo.protocol.PacketSnapshot;
 import ua.nanit.limbo.protocol.packets.configuration.PacketFinishConfiguration;
 import ua.nanit.limbo.protocol.packets.configuration.PacketKnownPacks;
@@ -140,19 +137,6 @@ public final class PacketSnapshots {
             header.setHeader(NbtMessageUtil.create(server.getConfig().getPlayerListHeader()));
             header.setFooter(NbtMessageUtil.create(server.getConfig().getPlayerListFooter()));
             PACKET_HEADER_AND_FOOTER = PacketSnapshot.of(header);
-        }
-
-        if (server.getConfig().isUseBrandName()) {
-            PacketPluginMessage pluginMessage = new PacketPluginMessage();
-            pluginMessage.setChannel(LimboConstants.BRAND_CHANNEL);
-            ByteMessage byteMessage = new ByteMessage(ByteBufAllocator.DEFAULT.heapBuffer());
-            try {
-                byteMessage.writeString(server.getConfig().getBrandName());
-                pluginMessage.setData(byteMessage.toByteArray());
-            } finally {
-                byteMessage.release();
-            }
-            PACKET_PLUGIN_MESSAGE = PacketSnapshot.of(pluginMessage);
         }
 
         PACKET_KNOWN_PACKS = PacketSnapshot.of(PacketKnownPacks.class, (version) -> {

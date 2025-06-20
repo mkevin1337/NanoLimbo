@@ -45,11 +45,8 @@ public final class LimboConfig {
     private String dimensionType;
     private int gameMode;
 
-    private boolean useBrandName;
     private boolean usePlayerList;
     private boolean useHeaderAndFooter;
-
-    private String brandName;
 
     private String playerListUsername;
     private String playerListHeader;
@@ -92,13 +89,9 @@ public final class LimboConfig {
             dimensionType = "the_end";
         }
         gameMode = conf.node("gameMode").getInt();
-        useBrandName = conf.node("brandName", "enable").getBoolean();
         usePlayerList = conf.node("playerList", "enable").getBoolean();
         playerListUsername = conf.node("playerList", "username").getString();
         useHeaderAndFooter = conf.node("headerAndFooter", "enable").getBoolean();
-
-        if (useBrandName)
-            brandName = conf.node("brandName", "content").getString();
 
         if (useHeaderAndFooter) {
             playerListHeader = Colors.of(conf.node("headerAndFooter", "header").getString());
@@ -175,20 +168,12 @@ public final class LimboConfig {
         return debugLevel;
     }
 
-    public boolean isUseBrandName() {
-        return useBrandName;
-    }
-
     public boolean isUsePlayerList() {
         return usePlayerList;
     }
 
     public boolean isUseHeaderAndFooter() {
         return useHeaderAndFooter;
-    }
-
-    public String getBrandName() {
-        return brandName;
     }
 
     public String getPlayerListUsername() {

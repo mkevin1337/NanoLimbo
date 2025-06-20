@@ -44,12 +44,6 @@ headerAndFooter:
 # Spectator works on 1.8+ clients
 gameMode: 3
 
-# Server name which is shown under F3
-# For 1.13+ clients
-brandName:
-  enable: true
-  content: 'NanoLimbo'
-
 # Player info forwarding support.
 # Available types:
 #  - NONE
