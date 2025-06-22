@@ -23,12 +23,6 @@ ping:
 # Available dimensions: OVERWORLD, NETHER, THE_END
 dimension: THE_END
 
-# Whether to display the player in the player list
-# For 1.16.5 clients, the player list will be sent even if disabled, to avoid crash
-playerList:
-  enable: false
-  username: 'NanoLimbo'
-
 # Setup player's game mode
 # 0 - Survival
 # 1 - Creative (hide HP and food bar)

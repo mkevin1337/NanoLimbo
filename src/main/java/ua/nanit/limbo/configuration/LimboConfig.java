@@ -44,10 +44,6 @@ public final class LimboConfig {
     private String dimensionType;
     private int gameMode;
 
-    private boolean usePlayerList;
-
-    private String playerListUsername;
-
     private InfoForwarding infoForwarding;
     private long readTimeout;
     private int debugLevel;
@@ -85,8 +81,6 @@ public final class LimboConfig {
             dimensionType = "the_end";
         }
         gameMode = conf.node("gameMode").getInt();
-        usePlayerList = conf.node("playerList", "enable").getBoolean();
-        playerListUsername = conf.node("playerList", "username").getString();
 
         infoForwarding = conf.node("infoForwarding").get(InfoForwarding.class);
         readTimeout = conf.node("readTimeout").getLong();
@@ -156,14 +150,6 @@ public final class LimboConfig {
 
     public int getDebugLevel() {
         return debugLevel;
-    }
-
-    public boolean isUsePlayerList() {
-        return usePlayerList;
-    }
-
-    public String getPlayerListUsername() {
-        return playerListUsername;
     }
 
     public boolean isUseEpoll() {

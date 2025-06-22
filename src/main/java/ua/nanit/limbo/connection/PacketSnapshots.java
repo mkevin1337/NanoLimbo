@@ -42,7 +42,6 @@ public final class PacketSnapshots {
     public static PacketSnapshot PACKET_SPAWN_POSITION;
     public static PacketSnapshot PACKET_PLUGIN_MESSAGE;
     public static PacketSnapshot PACKET_PLAYER_ABILITIES;
-    public static PacketSnapshot PACKET_PLAYER_INFO;
     public static PacketSnapshot PACKET_DECLARE_COMMANDS;
     public static PacketSnapshot PACKET_JOIN_MESSAGE;
     public static PacketSnapshot PACKET_BOSS_BAR;
@@ -116,7 +115,6 @@ public final class PacketSnapshots {
         declareCommands.setCommands(Collections.emptyList());
 
         PacketPlayerInfo info = new PacketPlayerInfo();
-        info.setUsername(server.getConfig().getPlayerListUsername());
         info.setGameMode(server.getConfig().getGameMode());
         info.setUuid(uuid);
 
@@ -126,7 +124,6 @@ public final class PacketSnapshots {
         PACKET_PLAYER_POS_AND_LOOK = PacketSnapshot.of(positionAndLook);
         PACKET_SPAWN_POSITION = PacketSnapshot.of(packetSpawnPosition);
         PACKET_PLAYER_ABILITIES = PacketSnapshot.of(playerAbilities);
-        PACKET_PLAYER_INFO = PacketSnapshot.of(info);
 
         PACKET_DECLARE_COMMANDS = PacketSnapshot.of(declareCommands);
 
