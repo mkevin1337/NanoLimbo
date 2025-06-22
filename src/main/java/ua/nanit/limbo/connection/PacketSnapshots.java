@@ -44,7 +44,6 @@ public final class PacketSnapshots {
     public static PacketSnapshot PACKET_PLAYER_ABILITIES;
     public static PacketSnapshot PACKET_DECLARE_COMMANDS;
     public static PacketSnapshot PACKET_JOIN_MESSAGE;
-    public static PacketSnapshot PACKET_BOSS_BAR;
 
     public static PacketSnapshot PACKET_PLAYER_POS_AND_LOOK_LEGACY;
     // For 1.19 we need to spawn player outside the world to avoid stuck in terrain loading
