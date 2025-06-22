@@ -50,6 +50,10 @@ public class PacketHandler {
         Log.debug("Pinged from %s [%s]", conn.getAddress(),
                 conn.getClientVersion().toString());
 
+        if(!packet.getNextState().toString().equals("LOGIN")) {
+            return;
+        }
+
         if (server.getConfig().getInfoForwarding().isLegacy()) {
             String[] split = packet.getHost().split("\00");
 
@@ -61,6 +65,8 @@ public class PacketHandler {
             }
         } else if (server.getConfig().getInfoForwarding().isBungeeGuard()) {
             if (!conn.checkBungeeGuardHandshake(packet.getHost())) {
+                Log.info("Connection attempt (%s) [%s] - invalid BungeeGuard token or handshake format",
+                    conn.getAddress(), conn.getClientVersion());
                 conn.disconnectLogin("Invalid BungeeGuard token or handshake format");
             }
         }
