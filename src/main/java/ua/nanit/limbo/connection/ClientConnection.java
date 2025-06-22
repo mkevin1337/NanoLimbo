@@ -163,12 +163,6 @@ public class ClientConnection extends ChannelInboundHandlerAdapter {
                     writePacket(PacketSnapshots.PACKET_PLUGIN_MESSAGE);
             }
 
-            if (PacketSnapshots.PACKET_BOSS_BAR != null && clientVersion.moreOrEqual(Version.V1_9))
-                writePacket(PacketSnapshots.PACKET_BOSS_BAR);
-
-            if (PacketSnapshots.PACKET_JOIN_MESSAGE != null)
-                writePacket(PacketSnapshots.PACKET_JOIN_MESSAGE);
-
             if (clientVersion.moreOrEqual(Version.V1_20_3)) {
                 writePacket(PacketSnapshots.PACKET_START_WAITING_CHUNKS);
 
