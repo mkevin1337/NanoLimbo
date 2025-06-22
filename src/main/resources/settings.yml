@@ -29,13 +29,6 @@ playerList:
   enable: false
   username: 'NanoLimbo'
 
-# Whether to display header and footer in player list
-# For 1.8+ clients
-headerAndFooter:
-  enable: false
-  header: '{"text": "&eWelcome!"}'
-  footer: '{"text": "&9NanoLimbo"}'
-
 # Setup player's game mode
 # 0 - Survival
 # 1 - Creative (hide HP and food bar)

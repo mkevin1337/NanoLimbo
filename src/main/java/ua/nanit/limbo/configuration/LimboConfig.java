@@ -21,7 +21,6 @@ import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.ConfigurationOptions;
 import org.spongepowered.configurate.serialize.TypeSerializerCollection;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
-import ua.nanit.limbo.util.Colors;
 import ua.nanit.limbo.server.data.InfoForwarding;
 import ua.nanit.limbo.server.data.PingData;
 
@@ -46,11 +45,8 @@ public final class LimboConfig {
     private int gameMode;
 
     private boolean usePlayerList;
-    private boolean useHeaderAndFooter;
 
     private String playerListUsername;
-    private String playerListHeader;
-    private String playerListFooter;
 
     private InfoForwarding infoForwarding;
     private long readTimeout;
@@ -91,12 +87,6 @@ public final class LimboConfig {
         gameMode = conf.node("gameMode").getInt();
         usePlayerList = conf.node("playerList", "enable").getBoolean();
         playerListUsername = conf.node("playerList", "username").getString();
-        useHeaderAndFooter = conf.node("headerAndFooter", "enable").getBoolean();
-
-        if (useHeaderAndFooter) {
-            playerListHeader = Colors.of(conf.node("headerAndFooter", "header").getString());
-            playerListFooter = Colors.of(conf.node("headerAndFooter", "footer").getString());
-        }
 
         infoForwarding = conf.node("infoForwarding").get(InfoForwarding.class);
         readTimeout = conf.node("readTimeout").getLong();
@@ -172,20 +162,8 @@ public final class LimboConfig {
         return usePlayerList;
     }
 
-    public boolean isUseHeaderAndFooter() {
-        return useHeaderAndFooter;
-    }
-
     public String getPlayerListUsername() {
         return playerListUsername;
-    }
-
-    public String getPlayerListHeader() {
-        return playerListHeader;
-    }
-
-    public String getPlayerListFooter() {
-        return playerListFooter;
     }
 
     public boolean isUseEpoll() {

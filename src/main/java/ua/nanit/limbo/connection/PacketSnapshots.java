@@ -30,7 +30,6 @@ import ua.nanit.limbo.protocol.packets.login.PacketLoginSuccess;
 import ua.nanit.limbo.protocol.packets.play.*;
 import ua.nanit.limbo.protocol.registry.Version;
 import ua.nanit.limbo.server.LimboServer;
-import ua.nanit.limbo.util.NbtMessageUtil;
 import ua.nanit.limbo.util.UuidUtil;
 
 import java.util.*;
@@ -47,7 +46,6 @@ public final class PacketSnapshots {
     public static PacketSnapshot PACKET_DECLARE_COMMANDS;
     public static PacketSnapshot PACKET_JOIN_MESSAGE;
     public static PacketSnapshot PACKET_BOSS_BAR;
-    public static PacketSnapshot PACKET_HEADER_AND_FOOTER;
 
     public static PacketSnapshot PACKET_PLAYER_POS_AND_LOOK_LEGACY;
     // For 1.19 we need to spawn player outside the world to avoid stuck in terrain loading
@@ -131,13 +129,6 @@ public final class PacketSnapshots {
         PACKET_PLAYER_INFO = PacketSnapshot.of(info);
 
         PACKET_DECLARE_COMMANDS = PacketSnapshot.of(declareCommands);
-
-        if (server.getConfig().isUseHeaderAndFooter()) {
-            PacketPlayerListHeader header = new PacketPlayerListHeader();
-            header.setHeader(NbtMessageUtil.create(server.getConfig().getPlayerListHeader()));
-            header.setFooter(NbtMessageUtil.create(server.getConfig().getPlayerListFooter()));
-            PACKET_HEADER_AND_FOOTER = PacketSnapshot.of(header);
-        }
 
         PACKET_KNOWN_PACKS = PacketSnapshot.of(PacketKnownPacks.class, (version) -> {
             PacketKnownPacks packetKnownPacks = new PacketKnownPacks();
