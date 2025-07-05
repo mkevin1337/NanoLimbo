@@ -43,6 +43,7 @@ public final class LimboConfig {
 
     private String dimensionType;
     private int gameMode;
+    private boolean secureProfile;
 
     private InfoForwarding infoForwarding;
     private long readTimeout;
@@ -81,6 +82,7 @@ public final class LimboConfig {
             dimensionType = "the_end";
         }
         gameMode = conf.node("gameMode").getInt();
+        secureProfile = conf.node("secureProfile").getBoolean();
 
         infoForwarding = conf.node("infoForwarding").get(InfoForwarding.class);
         readTimeout = conf.node("readTimeout").getLong();
@@ -138,6 +140,10 @@ public final class LimboConfig {
 
     public int getGameMode() {
         return gameMode;
+    }
+
+    public boolean isSecureProfile() {
+        return secureProfile;
     }
 
     public InfoForwarding getInfoForwarding() {

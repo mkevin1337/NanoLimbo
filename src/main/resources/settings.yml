@@ -31,6 +31,10 @@ dimension: THE_END
 # Spectator works on 1.8+ clients
 gameMode: 3
 
+# Remove secure-chat toast
+# For 1.20.5+ clients
+secureProfile: false
+
 # Player info forwarding support.
 # Available types:
 #  - NONE
